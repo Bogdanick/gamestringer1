@@ -76,13 +76,12 @@ jobs:
       # Gli `--ignore` sono eccezioni motivate, non silenziamenti: vanno
       # rimossi appena esiste una versione corretta raggiungibile.
       #
-      # RUSTSEC-2026-0194 / 0195 — quick-xml <0.41, DoS su XML malformato.
-      #   Non è dipendenza diretta: arriva da `plist` (bundling macOS, legge
-      #   solo plist generati da noi) e da `tauri-winrt-notification` (payload
-      #   delle notifiche Windows, costruito dall'app). Non parsiamo XML di
-      #   terzi né dai file di gioco su quel percorso. Da rimuovere quando
-      #   plist / tauri-winrt-notification passano a quick-xml >= 0.41.
-      #   Revisione prevista: 2026-10-01, o prima a ogni bump di Tauri.
+      # RUSTSEC-2026-0194 / 0195 — quick-xml <0.41: ignore RIMOSSO il 20/10/2026.
+      #   Era tollerato finché plist e tauri-winrt-notification restavano su
+      #   quick-xml <0.41. Alla revisione (scaduta il 01/10) bastava un
+      #   `cargo update -p plist -p notify-rust`, senza toccare Tauri: plist
+      #   1.10 usa quick-xml 0.41, e notify-rust 4.18 porta
+      #   tauri-winrt-notification 0.8, che quick-xml non lo usa più.
       #
       # RUSTSEC-2026-0245 / 0246 — sevenz-rust: NESSUN ignore, RISOLTO ALLA RADICE
       #   l'11/08/2026 migrando a `sevenz-rust2`. Vale la pena scrivere perché non
@@ -91,8 +90,29 @@ jobs:
       #   un ignore non avrebbe avuto alcuna condizione di uscita, sarebbe
       #   scaduto mai e diventato permanente. Un'eccezione che non può essere
       #   chiusa non è un'eccezione, è una rinuncia scritta in un commento.
+      #
+      # RUSTSEC-2026-0367 / 0368 / 0369 — zip <9.0.0: `ZipArchive::extract()` e
+      #   l'estrazione in streaming conservano i bit SUID/SGID, creano symlink
+      #   con target fuori dalla destinazione e applicano permessi Unix
+      #   attraverso quei symlink. Tutte e tre stanno SOLO in `extract()`.
+      #   Il fix esiste solo in 9.x (`patched = [">= 9.0.0"]`, nessun backport
+      #   su 4.x) e non è raggiungibile: `tauri-plugin-updater` richiede
+      #   `zip ^4` anche nell'ultima 2.14.0 (verificato su crates.io il
+      #   20/10/2026), quindi zip 4.x resta nel grafo comunque.
+      #   Perché non è raggiungibile da input di terzi:
+      #   - il nostro codice (src-tauri/src) NON chiama mai `extract()`: legge
+      #     le entry una per una con `mangled_name()` e scrive file normali,
+      #     senza symlink né `set_permissions` (grep del 20/10/2026);
+      #   - l'updater chiama `extract()` solo nel ramo `#[cfg(windows)]` (zip è
+      #     dipendenza target windows-only) e DOPO `verify_signature` minisign
+      #     sul pacchetto scaricato: un archivio ostile richiede la nostra
+      #     chiave di firma. SUID/SGID e i symlink verificati negli advisory
+      #     sono comportamento macOS/Linux.
+      #   Da rimuovere quando tauri-plugin-updater passa a zip >= 9 (allora va
+      #   portata a 9.x anche la nostra dipendenza diretta `zip = "4.6"`).
+      #   Revisione prevista: 2026-11-20, o prima a ogni bump di Tauri.
       - name: cargo audit
-        run: cargo audit --ignore RUSTSEC-2026-0194 --ignore RUSTSEC-2026-0195
+        run: cargo audit --ignore RUSTSEC-2026-0367 --ignore RUSTSEC-2026-0368 --ignore RUSTSEC-2026-0369
       - name: Genera SBOM CycloneDX (cargo)
         if: always()
         continue-on-error: true # come sopra: visibile, ma non blocca
