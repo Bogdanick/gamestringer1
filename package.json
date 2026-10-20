@@ -113,14 +113,14 @@
     "postcss": "^8.5.28",
     "postcss-nesting": "^14.0.1",
     "prisma": "^6.10.1",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "tailwind-merge": "3.6.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "1.0.7",
     "ts-node": "10.9.2",
     "tsx": "4.23.13",
     "typescript": "5.6.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.1.12"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
@@ -166,8 +166,11 @@
   },
   "overrides": {
     "js-yaml": "^4.3.2",
-    "sharp": "^0.35.4",
-    "postcss": "$postcss"
+    "sharp": "^0.35.5",
+    "postcss": "$postcss",
+    "@prisma/config": {
+      "deepmerge-ts": "^8.0.2"
+    }
   },
   "version": "1.17.0"
 }
