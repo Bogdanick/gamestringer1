@@ -30,46 +30,48 @@ const ROOT = path.resolve(__dirname, '..');
  */
 const ALLOWLIST = [
   {
-    id: 'GHSA-ggr8-5vv4-36mx',
-    package: 'deepmerge-ts',
-    until: '2026-11-02',
+    id: 'GHSA-vfj7-8cjw-p6xm',
+    package: 'braces',
+    until: '2026-11-20',
     reason: [
-      'CVE-2026-40345, pubblicata il 16/08/2026: deepmerge() va in stack',
-      'exhaustion su grafi di oggetti RICORSIVI. Impatto solo Availability',
-      '(crash), niente confidenzialità né integrità.',
+      'braces <=3.0.3 va in stack exhaustion espandendo pattern di parentesi',
+      'graffe annidati in profondità. Impatto solo Availability (crash).',
+      '',
+      'Perché non si aggiorna e basta: il range vulnerabile è <=3.0.3 e la',
+      '3.0.3 è l\'ULTIMA versione pubblicata (settembre 2024, verificato sul',
+      'registry il 20/10/2026). Non esiste un fix, né backport né major:',
+      'nessun `npm audit fix` e nessun override possibile. Il «fix» che npm',
+      'propone è tailwindcss 4, una migrazione dell\'intero CSS, non un bump.',
       '',
       'Perché non è raggiungibile da input di terzi:',
-      '  - deepmerge-ts@7.1.5 arriva solo da @prisma/config, tirato dalla CLI',
-      '    `prisma` (devDependencies). Serve a fondere il file di',
-      '    configurazione Prisma: input LOCALE dello sviluppatore, non dati',
-      '    che arrivano da rete o da un gioco tradotto.',
-      '  - nessun sorgente dell\'app importa @prisma/config o deepmerge',
-      '    (verificato con grep su app/ components/ lib/ hooks/ scripts/',
-      '    src-tauri/src il 17/08/2026).',
-      '  - il gate lo marca PROD perché @prisma/client dichiara `prisma` come',
-      '    peer opzionale, ma la CLI non finisce nel bundle Tauri spedito.',
+      '  - braces arriva solo da micromatch / fast-glob / chokidar 3, tirati',
+      '    da tailwindcss 3.3.3 e da eslint-config-next: tutti',
+      '    devDependencies, il gate lo marca «solo dev». Niente finisce nel',
+      '    bundle Tauri spedito (il chokidar di dependencies è il 5, che non',
+      '    usa braces).',
+      '  - i pattern che espande sono i glob scritti da noi nel `content` di',
+      '    tailwind.config e nella config ESLint: input LOCALE dello',
+      '    sviluppatore, mai dati da rete o da un gioco tradotto.',
+      '  - nessun sorgente dell\'app importa braces, micromatch o fast-glob',
+      '    (grep su app/ components/ lib/ hooks/ scripts/ il 20/10/2026).',
       '',
-      'Perché non si aggiorna e basta: @prisma/config pinna ESATTAMENTE',
-      '"deepmerge-ts": "7.1.5" — anche nella sua ultima versione (7.9.1,',
-      'verificata sul registry il 17/08). Nessun `npm audit fix` possibile;',
-      'forzare 8.0.0 con overrides è un salto major su una libreria che',
-      'Prisma usa internamente, e `prisma generate` gira in postinstall: si',
-      'rischia di rompere la build di tutti per un DoS non raggiungibile.',
-      '',
-      'Cosa sblocca la rimozione: @prisma/config che passa a deepmerge-ts 8.x.',
-      'Riverificare a ogni giro (lezione di brace-expansion: i backport che',
-      'oggi non esistono domani ci sono).',
-      '',
-      'Riverificata il 02/10/2026, alla scadenza: l\'ultima 6.x (prisma e',
-      '@prisma/config 6.19.3) pinna ancora deepmerge-ts 7.1.5, e così il',
-      '@prisma/config più recente sul registry. Il «fix available» di npm',
-      'audit punta a prisma 8, ancora RC e salto major dal nostro ^6.10.1.',
-      'Le ragioni sopra reggono invariate: proroga di un mese, non di più.',
+      'Cosa sblocca la rimozione: una braces >3.0.3 col fix (allora basta',
+      '`npm update braces`), oppure la migrazione a tailwindcss 4 insieme a',
+      'un eslint-config-next che non tiri più fast-glob 3.',
     ].join('\n'),
   },
+  // GHSA-ggr8-5vv4-36mx (deepmerge-ts, CVE-2026-40345) — pensionata il
+  // 20/10/2026, in anticipo sulla scadenza del 02/11. @prisma/config 6.x pinna
+  // ancora deepmerge-ts 7.1.5, ma l'unico uso è `deepmerge()` semplice come
+  // `merger` di c12 per fondere prisma.config: nessuna delle rotture della 8.x
+  // lo tocca (riguardano deepmergeInto, nomi di tipi e merge delle Map), e
+  // @prisma/config 7.10.1 è già passato da solo a deepmerge-ts 8.0.2. Quindi
+  // override in package.json invece di eccezione; verificato con
+  // `prisma validate` e `prisma generate`.
+  //
   // Vuota dal 04/08/2026 al 17/08/2026 — e che torni vuota il prima possibile.
   //
-  // Storia dell'unica eccezione avuta (GHSA-mh99-v99m-4gvg, brace-expansion,
+  // Storia della prima eccezione avuta (GHSA-mh99-v99m-4gvg, brace-expansion,
   // datata 30/09): al 27/07 il fix esisteva solo in 5.x, senza backport, e
   // l'override era impossibile (il build CJS di 5.x esporta un oggetto e
   // rompe minimatch 3.x a runtime). Il 04/08 i backport sono ARRIVATI
