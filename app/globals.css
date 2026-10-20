@@ -504,6 +504,12 @@ select:focus {
   box-shadow: 0 0 0 2px hsl(var(--ring) / 0.35);
 }
 
+/* Il campo della palette Ctrl K sta dentro una riga senza bordo: l'anello
+   finiva attorno al solo testo, staccato dalla lente. */
+[cmdk-input]:focus {
+  box-shadow: none;
+}
+
 /* Custom animations */
 @keyframes shimmer {
   0% {
