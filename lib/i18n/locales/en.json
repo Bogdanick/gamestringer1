@@ -55,7 +55,10 @@
     "games": "Games",
     "searchHint": "Type 2+ characters to search among",
     "gamesUnit": "games...",
-    "visitSite": "Visit gamestringer.ai"
+    "visitSite": "Visit gamestringer.ai",
+    "collapseSidebar": "Collapse sidebar",
+    "expandSidebar": "Expand sidebar",
+    "mainNavigation": "Main navigation"
   },
   "customPromptSettings": {
     "settingsSaved": "Custom Prompt settings saved",
@@ -2730,7 +2733,8 @@
     "stores": "Stores",
     "tutorialAndGuide": "Tutorial & Guide",
     "feedback": "Feedback",
-    "liveTranslate": "Live Translation"
+    "liveTranslate": "Live Translation",
+    "engines": "Engines"
   },
   "settings": {
     "title": "Settings",
@@ -7255,5 +7259,17 @@
         "desc": "Picks the best providers by target language and game genre on its own"
       }
     }
+  },
+  "statusLine": {
+    "online": "Online",
+    "offline": "Offline",
+    "offlineHint": "Offline: local translation keeps working; community changes sync when the connection returns",
+    "serverDown": "Server unreachable",
+    "latency": "Community server unreachable (latency {ms} ms)",
+    "queued": "{n} queued",
+    "ollamaChecking": "Ollama: checking…",
+    "ollamaOn": "Ollama on",
+    "ollamaOff": "Ollama off",
+    "commands": "commands"
   }
 }

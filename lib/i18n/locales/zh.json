@@ -55,7 +55,10 @@
     "games": "游戏",
     "searchHint": "输入 2 个及以上字符以搜索",
     "gamesUnit": "个游戏...",
-    "visitSite": "访问 gamestringer.ai"
+    "visitSite": "访问 gamestringer.ai",
+    "collapseSidebar": "收起侧边栏",
+    "expandSidebar": "展开侧边栏",
+    "mainNavigation": "主导航"
   },
   "customPromptSettings": {
     "settingsSaved": "自定义提示词设置已保存",
@@ -2642,7 +2645,8 @@
     "stores": "商店",
     "tutorialAndGuide": "教程与指南",
     "feedback": "反馈",
-    "liveTranslate": "实时翻译"
+    "liveTranslate": "实时翻译",
+    "engines": "引擎"
   },
   "settings": {
     "title": "设置",
@@ -7255,5 +7259,17 @@
         "desc": "根据目标语言和游戏类型自动挑选最合适的服务商"
       }
     }
+  },
+  "statusLine": {
+    "online": "在线",
+    "offline": "离线",
+    "offlineHint": "离线：本地翻译仍可使用；社区更改将在连接恢复后同步",
+    "serverDown": "服务器无法访问",
+    "latency": "社区服务器无法访问（延迟 {ms} 毫秒）",
+    "queued": "{n} 项排队中",
+    "ollamaChecking": "Ollama：检查中…",
+    "ollamaOn": "Ollama 已运行",
+    "ollamaOff": "Ollama 未运行",
+    "commands": "命令"
   }
 }

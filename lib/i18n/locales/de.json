@@ -55,7 +55,10 @@
     "games": "Spiele",
     "searchHint": "Gib 2+ Zeichen ein, um zu suchen unter",
     "gamesUnit": "Spiele...",
-    "visitSite": "gamestringer.ai besuchen"
+    "visitSite": "gamestringer.ai besuchen",
+    "collapseSidebar": "Seitenleiste einklappen",
+    "expandSidebar": "Seitenleiste ausklappen",
+    "mainNavigation": "Hauptnavigation"
   },
   "customPromptSettings": {
     "settingsSaved": "Custom-Prompt-Einstellungen gespeichert",
@@ -2642,7 +2645,8 @@
     "stores": "Shops",
     "tutorialAndGuide": "Tutorial & Anleitung",
     "feedback": "Feedback",
-    "liveTranslate": "Live-Übersetzung"
+    "liveTranslate": "Live-Übersetzung",
+    "engines": "Engines"
   },
   "settings": {
     "title": "Einstellungen",
@@ -7255,5 +7259,17 @@
         "desc": "Wählt von selbst die besten Anbieter nach Zielsprache und Spielgenre"
       }
     }
+  },
+  "statusLine": {
+    "online": "Online",
+    "offline": "Offline",
+    "offlineHint": "Offline: Die lokale Übersetzung funktioniert weiter; Community-Änderungen werden synchronisiert, sobald die Verbindung zurück ist",
+    "serverDown": "Server nicht erreichbar",
+    "latency": "Community-Server nicht erreichbar (Latenz {ms} ms)",
+    "queued": "{n} in Warteschlange",
+    "ollamaChecking": "Ollama: wird geprüft…",
+    "ollamaOn": "Ollama aktiv",
+    "ollamaOff": "Ollama aus",
+    "commands": "Befehle"
   }
 }

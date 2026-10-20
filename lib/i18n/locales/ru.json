@@ -55,7 +55,10 @@
     "games": "Игры",
     "searchHint": "Введите 2+ символа для поиска среди",
     "gamesUnit": "игр...",
-    "visitSite": "Посетить gamestringer.ai"
+    "visitSite": "Посетить gamestringer.ai",
+    "collapseSidebar": "Свернуть боковую панель",
+    "expandSidebar": "Развернуть боковую панель",
+    "mainNavigation": "Основная навигация"
   },
   "customPromptSettings": {
     "settingsSaved": "Настройки Custom Prompt сохранены",
@@ -2642,7 +2645,8 @@
     "stores": "Магазины",
     "tutorialAndGuide": "Руководство и инструкция",
     "feedback": "Отзывы",
-    "liveTranslate": "Живой перевод"
+    "liveTranslate": "Живой перевод",
+    "engines": "Движки"
   },
   "settings": {
     "title": "Настройки",
@@ -7255,5 +7259,17 @@
         "desc": "Сам выбирает лучших провайдеров по языку перевода и жанру игры"
       }
     }
+  },
+  "statusLine": {
+    "online": "В сети",
+    "offline": "Не в сети",
+    "offlineHint": "Нет сети: локальный перевод продолжает работать; изменения в сообществе синхронизируются после восстановления связи",
+    "serverDown": "Сервер недоступен",
+    "latency": "Сервер сообщества недоступен (задержка {ms} мс)",
+    "queued": "{n} в очереди",
+    "ollamaChecking": "Ollama: проверка…",
+    "ollamaOn": "Ollama запущен",
+    "ollamaOff": "Ollama выключен",
+    "commands": "команды"
   }
 }
