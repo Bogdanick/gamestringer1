@@ -76,13 +76,12 @@ jobs:
       # Gli `--ignore` sono eccezioni motivate, non silenziamenti: vanno
       # rimossi appena esiste una versione corretta raggiungibile.
       #
-      # RUSTSEC-2026-0194 / 0195 — quick-xml <0.41, DoS su XML malformato.
-      #   Non è dipendenza diretta: arriva da `plist` (bundling macOS, legge
-      #   solo plist generati da noi) e da `tauri-winrt-notification` (payload
-      #   delle notifiche Windows, costruito dall'app). Non parsiamo XML di
-      #   terzi né dai file di gioco su quel percorso. Da rimuovere quando
-      #   plist / tauri-winrt-notification passano a quick-xml >= 0.41.
-      #   Revisione prevista: 2026-10-01, o prima a ogni bump di Tauri.
+      # RUSTSEC-2026-0194 / 0195 — quick-xml <0.41: ignore RIMOSSO il 20/10/2026.
+      #   Era tollerato finché plist e tauri-winrt-notification restavano su
+      #   quick-xml <0.41. Alla revisione (scaduta il 01/10) bastava un
+      #   `cargo update -p plist -p notify-rust`, senza toccare Tauri: plist
+      #   1.10 usa quick-xml 0.41, e notify-rust 4.18 porta
+      #   tauri-winrt-notification 0.8, che quick-xml non lo usa più.
       #
       # RUSTSEC-2026-0245 / 0246 — sevenz-rust: NESSUN ignore, RISOLTO ALLA RADICE
       #   l'11/08/2026 migrando a `sevenz-rust2`. Vale la pena scrivere perché non
@@ -113,7 +112,7 @@ jobs:
       #   portata a 9.x anche la nostra dipendenza diretta `zip = "4.6"`).
       #   Revisione prevista: 2026-11-20, o prima a ogni bump di Tauri.
       - name: cargo audit
-        run: cargo audit --ignore RUSTSEC-2026-0194 --ignore RUSTSEC-2026-0195 --ignore RUSTSEC-2026-0367 --ignore RUSTSEC-2026-0368 --ignore RUSTSEC-2026-0369
+        run: cargo audit --ignore RUSTSEC-2026-0367 --ignore RUSTSEC-2026-0368 --ignore RUSTSEC-2026-0369
       - name: Genera SBOM CycloneDX (cargo)
         if: always()
         continue-on-error: true # come sopra: visibile, ma non blocca
