@@ -55,7 +55,10 @@
     "games": "Jogos",
     "searchHint": "Digite 2+ caracteres para buscar entre",
     "gamesUnit": "jogos...",
-    "visitSite": "Visite gamestringer.ai"
+    "visitSite": "Visite gamestringer.ai",
+    "collapseSidebar": "Recolher a barra lateral",
+    "expandSidebar": "Expandir a barra lateral",
+    "mainNavigation": "Navegação principal"
   },
   "customPromptSettings": {
     "settingsSaved": "Configurações do Custom Prompt salvas",
@@ -2642,7 +2645,8 @@
     "stores": "Lojas",
     "tutorialAndGuide": "Tutorial e Guia",
     "feedback": "Feedback",
-    "liveTranslate": "Tradução ao vivo"
+    "liveTranslate": "Tradução ao vivo",
+    "engines": "Motores"
   },
   "settings": {
     "title": "Configurações",
@@ -7255,5 +7259,17 @@
         "desc": "Escolhe sozinho os melhores provedores conforme o idioma de destino e o gênero do jogo"
       }
     }
+  },
+  "statusLine": {
+    "online": "Online",
+    "offline": "Offline",
+    "offlineHint": "Offline: a tradução local continua funcionando; as alterações da comunidade são sincronizadas quando a conexão voltar",
+    "serverDown": "Servidor inacessível",
+    "latency": "Servidor da comunidade inacessível (latência {ms} ms)",
+    "queued": "{n} na fila",
+    "ollamaChecking": "Ollama: verificando…",
+    "ollamaOn": "Ollama ativo",
+    "ollamaOff": "Ollama desligado",
+    "commands": "comandos"
   }
 }

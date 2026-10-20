@@ -55,7 +55,10 @@
     "games": "ゲーム",
     "searchHint": "2文字以上入力して検索:",
     "gamesUnit": "ゲーム...",
-    "visitSite": "gamestringer.aiにアクセス"
+    "visitSite": "gamestringer.aiにアクセス",
+    "collapseSidebar": "サイドバーを折りたたむ",
+    "expandSidebar": "サイドバーを展開",
+    "mainNavigation": "メインナビゲーション"
   },
   "customPromptSettings": {
     "settingsSaved": "カスタムプロンプトの設定を保存しました",
@@ -2642,7 +2645,8 @@
     "stores": "ストア",
     "tutorialAndGuide": "チュートリアルとガイド",
     "feedback": "フィードバック",
-    "liveTranslate": "リアルタイム翻訳"
+    "liveTranslate": "リアルタイム翻訳",
+    "engines": "エンジン"
   },
   "settings": {
     "title": "設定",
@@ -7255,5 +7259,17 @@
         "desc": "対象言語とゲームのジャンルに合わせて最適なプロバイダーを自動で選択"
       }
     }
+  },
+  "statusLine": {
+    "online": "オンライン",
+    "offline": "オフライン",
+    "offlineHint": "オフライン：ローカル翻訳は引き続き使えます。コミュニティの変更は接続が戻ると同期されます",
+    "serverDown": "サーバーに接続できません",
+    "latency": "コミュニティサーバーに接続できません（遅延 {ms} ms）",
+    "queued": "待機中 {n} 件",
+    "ollamaChecking": "Ollama: 確認中…",
+    "ollamaOn": "Ollama 起動中",
+    "ollamaOff": "Ollama 停止中",
+    "commands": "コマンド"
   }
 }

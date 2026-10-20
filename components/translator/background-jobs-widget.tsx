@@ -116,7 +116,7 @@ export function BackgroundJobsWidget() {
   if (minimized && activeJobs.length > 0) {
     return (
       <div
-        className="fixed bottom-4 right-4 z-[60] flex items-center gap-2 px-3 py-2 rounded-full bg-slate-900/95 border border-indigo-500/40 shadow-xl backdrop-blur-xl cursor-pointer hover:border-indigo-500/60 transition-all"
+        className="fixed bottom-10 right-4 z-[60] flex items-center gap-2 px-3 py-2 rounded-full bg-slate-900/95 border border-indigo-500/40 shadow-xl backdrop-blur-xl cursor-pointer hover:border-indigo-500/60 transition-all"
         onClick={() => setMinimized(false)}
       >
         <Loader2 className="h-4 w-4 text-indigo-400 animate-spin" />
@@ -136,7 +136,7 @@ export function BackgroundJobsWidget() {
 
   return (
     <div className={cn(
-      "fixed bottom-4 right-4 z-[60] w-[380px] bg-slate-950/95 border border-slate-700/60 rounded-xl shadow-2xl backdrop-blur-xl overflow-hidden transition-all",
+      "fixed bottom-10 right-4 z-[60] w-[380px] bg-slate-950/95 border border-slate-700/60 rounded-xl shadow-2xl backdrop-blur-xl overflow-hidden transition-all",
       expanded ? "max-h-[500px]" : "max-h-[260px]"
     )}>
       {/* Header */}

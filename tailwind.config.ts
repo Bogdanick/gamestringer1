@@ -34,6 +34,14 @@ const config: Config = {
         'micro': ['0.5625rem', { lineHeight: '0.75rem' }],   // 9px  — replaces text-micro
         '2xs':   ['0.625rem',  { lineHeight: '0.875rem' }],  // 10px — replaces text-2xs
       },
+      // B + C: testo in IBM Plex Sans, dati in JetBrains Mono, pixel SOLO come
+      // accento (titoli, contatori, ≥16px) — mai nelle tabelle. Le variabili
+      // vengono da next/font in app/layout.tsx.
+      fontFamily: {
+        sans: ['var(--font-body)', 'system-ui', 'Segoe UI', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'Consolas', 'monospace'],
+        pixel: ['var(--font-pixel)', 'var(--font-mono)', 'monospace'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -78,6 +86,18 @@ const config: Config = {
         success: {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          foreground: "hsl(var(--gold-foreground))",
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
