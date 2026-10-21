@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama on",
     "ollamaOff": "Ollama off",
     "commands": "commands"
+  },
+  "notFound": {
+    "title": "Nothing here",
+    "message": "This page doesn't exist or has been moved.",
+    "back": "Back to Dashboard"
   }
 }

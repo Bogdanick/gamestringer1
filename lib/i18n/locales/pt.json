@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama ativo",
     "ollamaOff": "Ollama desligado",
     "commands": "comandos"
+  },
+  "notFound": {
+    "title": "Nada aqui",
+    "message": "Esta página não existe ou foi movida.",
+    "back": "Voltar ao painel"
   }
 }

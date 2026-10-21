@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama 실행 중",
     "ollamaOff": "Ollama 꺼짐",
     "commands": "명령"
+  },
+  "notFound": {
+    "title": "여기엔 아무것도 없습니다",
+    "message": "이 페이지는 존재하지 않거나 이동되었습니다.",
+    "back": "대시보드로 돌아가기"
   }
 }

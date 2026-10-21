@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama 已运行",
     "ollamaOff": "Ollama 未运行",
     "commands": "命令"
+  },
+  "notFound": {
+    "title": "这里什么都没有",
+    "message": "此页面不存在或已被移动。",
+    "back": "返回仪表板"
   }
 }

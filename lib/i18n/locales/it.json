@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama attivo",
     "ollamaOff": "Ollama spento",
     "commands": "comandi"
+  },
+  "notFound": {
+    "title": "Qui non c'è niente",
+    "message": "Questa pagina non esiste o è stata spostata.",
+    "back": "Torna alla Dashboard"
   }
 }
