@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama activo",
     "ollamaOff": "Ollama apagado",
     "commands": "comandos"
+  },
+  "notFound": {
+    "title": "Aquí no hay nada",
+    "message": "Esta página no existe o se ha movido.",
+    "back": "Volver al panel"
   }
 }

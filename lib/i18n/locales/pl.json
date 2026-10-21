@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama włączona",
     "ollamaOff": "Ollama wyłączona",
     "commands": "polecenia"
+  },
+  "notFound": {
+    "title": "Nic tu nie ma",
+    "message": "Ta strona nie istnieje lub została przeniesiona.",
+    "back": "Wróć do pulpitu"
   }
 }

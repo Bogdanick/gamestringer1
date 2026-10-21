@@ -7271,5 +7271,10 @@
     "ollamaOn": "Ollama 起動中",
     "ollamaOff": "Ollama 停止中",
     "commands": "コマンド"
+  },
+  "notFound": {
+    "title": "ここには何もありません",
+    "message": "このページは存在しないか、移動されました。",
+    "back": "ダッシュボードに戻る"
   }
 }

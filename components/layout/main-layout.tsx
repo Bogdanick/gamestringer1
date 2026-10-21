@@ -182,7 +182,7 @@ const getNavGroups = (t: (key: string) => string): NavGroup[] => [
       // extract_all_pak) e NON era in nessun menu. Compariva solo nella
       // pagina Guida, che legge da lib/tools-registry.ts — l'unico
       // consumatore di quel registro. Per l'utente non esisteva.
-      { name: 'Visual Novel (Danganronpa)', href: '/danganronpa-patcher', icon: Package },
+      { name: 'Danganronpa', href: '/danganronpa-patcher', icon: Package },
     ],
   },
   // ── STRUMENTI ───────────────────────────────────────────────────
@@ -499,25 +499,40 @@ export function MainLayout({ children }: MainLayoutProps) {
           className="fixed inset-y-0 left-0 z-50 flex flex-col border-r border-border bg-[hsl(var(--sidebar-bg))] transition-[width] duration-200 ease-out"
           style={{ width: sidebarOpen ? `${display.sidebarWidth}px` : '72px' }}
         >
-          {/* Logo e toggle */}
-          <div className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-3">
+          {/* Logo e toggle. Compressa (72px) non ci stanno affiancati: il logo
+              resta in alto e la freccia scende in una riga sua. */}
+          <div className={cn('flex h-14 shrink-0 items-center gap-2 border-b border-border px-3', !sidebarOpen && 'justify-center')}>
+            <Link href="/" className={cn('flex min-w-0 items-center gap-2.5', sidebarOpen && 'flex-1')} title={!sidebarOpen ? 'GameStringer' : undefined}>
+              <img src="/favicon.svg" alt={sidebarOpen ? '' : 'GameStringer'} className="h-8 w-8 shrink-0" />
+              {sidebarOpen && <span className="truncate font-pixel text-lg leading-none text-foreground">GameStringer</span>}
+            </Link>
             {sidebarOpen && (
-              <Link href="/" className="flex min-w-0 flex-1 items-center gap-2.5">
-                <img src="/favicon.svg" alt="" className="h-8 w-8 shrink-0" />
-                <span className="truncate font-pixel text-lg leading-none text-foreground">GameStringer</span>
-              </Link>
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className="text-muted-foreground hover:text-foreground"
+                onClick={toggleSidebar}
+                aria-label={t('mainLayout.collapseSidebar')}
+                aria-expanded
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
             )}
-            <Button
-              variant="ghost"
-              size="icon-sm"
-              className={cn('text-muted-foreground hover:text-foreground', !sidebarOpen && 'mx-auto')}
-              onClick={toggleSidebar}
-              aria-label={sidebarOpen ? t('mainLayout.collapseSidebar') : t('mainLayout.expandSidebar')}
-              aria-expanded={sidebarOpen}
-            >
-              {sidebarOpen ? <ChevronLeft className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-            </Button>
           </div>
+          {!sidebarOpen && (
+            <div className="flex shrink-0 justify-center pt-2">
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className="text-muted-foreground hover:text-foreground"
+                onClick={toggleSidebar}
+                aria-label={t('mainLayout.expandSidebar')}
+                aria-expanded={false}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
 
           <nav className="custom-scrollbar min-h-0 flex-1 overflow-y-auto px-2 py-3" aria-label={t('mainLayout.mainNavigation')}>
             {navGroups.map((group, groupIndex) => {
